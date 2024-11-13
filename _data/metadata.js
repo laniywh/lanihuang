@@ -6,6 +6,6 @@ export default {
 	author: {
 		name: 'Your Name Here',
 		email: 'youremailaddress@example.com',
-		url: 'https://example.com/about-me/'
-	}
+		url: 'https://example.com/about-me/',
+	},
 };
