@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+---
+{# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
+{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+{%- css %}{% include "src/public/css/prism-diff.css" %}{%- endcss %}
+<article class="prose max-w-xl mx-auto">
+	<h1>{{ title }}</h1>
+
+	<ul class="flex flex-wrap gap-2 list-none p-0 m-0">
+		<li class="p-0">
+			<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+		</li>
+		{%- for tag in tags | filterTagList %}
+			{%- set tagUrl %}/blog/tags/{{ tag | slugify }}/{% endset %}
+			<li class="p-0">
+				<a href="{{ tagUrl }}">{{ tag }}</a>
+				{%- if not loop.last %}, {% endif %}
+			</li>
+		{%- endfor %}
+	</ul>
+
+	{{ content | safe }}
+
+	{%- if collections.posts %}
+		{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+		{%- set nextPost = collections.posts | getNextCollectionItem %}
+		{%- if nextPost or previousPost %}
+			<ul class="flex justify-between gap-2 list-none p-0 border-t-gray-200 border-dashed">
+				{%- if previousPost %}
+					<li class="p-0">← Previous<br>
+						<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+					</li>
+				{% endif %}
+				{%- if nextPost %}
+					<li class="p-0 text-right">Next →<br>
+						<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+					</li>
+				{% endif %}
+			</ul>
+		{%- endif %}
+	{%- endif %}
+</article>

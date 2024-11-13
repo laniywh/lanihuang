@@ -8,8 +8,8 @@ backend:
 # change url to a link to the image you want to use, no file paths, must be a URL
 # logo_url:
 
-media_folder: "src/assets/images/blog"
-public_folder: "/assets/images/blog"
+media_folder: "src/public/images/blog"
+public_folder: "/public/images/blog"
 
 collections:
   - name: "blog"

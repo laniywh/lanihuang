@@ -1,0 +1,12 @@
+---js
+const eleventyNavigation = {
+	key: "Blog",
+	order: 2,
+};
+const	permalink= "/blog/";
+---
+
+<h1 class="text-4xl font-bold mt-8 mb-4">Blog</h1>
+
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}
