@@ -3,13 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-	a {
-		@apply text-gray-500 hover:text-gray-700 transition-colors duration-200 underline;
-	}
-
-	/* Different styles for visited links */
+	a,
 	a:visited {
-		@apply text-gray-600 hover:text-gray-800;
+		@apply text-gray-500 hover:text-gray-700 transition-colors duration-200 underline;
 	}
 
 	/* Style links within navigation differently */
@@ -25,5 +21,11 @@
 	/* Style external links */
 	.external-link {
 		@apply inline-flex items-center gap-1;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			@apply text-gray-100;
+		}
 	}
 }
